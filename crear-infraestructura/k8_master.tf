@@ -7,15 +7,16 @@ resource "azurerm_linux_virtual_machine" "k8s_master_vm" {
     location            = azurerm_resource_group.rg.location
     size                = var.vm_size
     admin_username      = "adminUsername"
-    network_interface_ids = [ azurerm_network_interface.nic_k8s_mater.id ]
     
+    network_interface_ids = [ azurerm_network_interface.nic_k8s_mater.id ]
+ 
     disable_password_authentication = true
     
     admin_ssh_key {
-        username   = "adminuser"
+        username   = "ec2-user"
         public_key = file("~/.ssh/id_rsa.pub")
     }
-  
+
     os_disk {
         caching              = "ReadWrite"
         storage_account_type = "Standard_LRS"
