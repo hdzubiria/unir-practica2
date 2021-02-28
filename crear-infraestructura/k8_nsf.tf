@@ -17,7 +17,7 @@ resource "azurerm_network_interface" "nic_k8s_nfs" {
     name                           = "k8s_nfs_ipconfiguration"
     subnet_id                      = azurerm_subnet.mySubnet.id 
     private_ip_address_allocation  = "Static"
-    private_ip_address             = "10.0.1.1"
+    private_ip_address             = "10.0.1.40"
     public_ip_address_id           = azurerm_public_ip.k8s_nfs_ipp.id
   }
 
