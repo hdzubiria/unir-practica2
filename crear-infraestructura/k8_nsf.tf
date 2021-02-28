@@ -8,17 +8,17 @@
 # Create NIC de la k8_master
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_interface
 
-resource "azurerm_network_interface" "nic_nfs" {
-  name                = "nic_nfs"  
+resource "azurerm_network_interface" "nic_k8s_nfs" {
+  name                = "nic_k8s_nfs"  
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 
     ip_configuration {
-    name                           = "k8s_nsf_ipconfiguration"
+    name                           = "k8s_nfs_ipconfiguration"
     subnet_id                      = azurerm_subnet.mySubnet.id 
     private_ip_address_allocation  = "Static"
     private_ip_address             = "10.0.1.1"
-    public_ip_address_id           = azurerm_public_ip.nfs_ipp.id
+    public_ip_address_id           = azurerm_public_ip.k8s_nfs_ipp.id
   }
 
     tags = {
@@ -31,8 +31,8 @@ resource "azurerm_network_interface" "nic_nfs" {
 # IP pública de NFS
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/public_ip
 
-resource "azurerm_public_ip" "nfs_ipp" {
-  name                = "nfs_ipp"
+resource "azurerm_public_ip" "k8s_nfs_ipp" {
+  name                = "k8s_nfs_ipp"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Dynamic"
@@ -49,14 +49,14 @@ resource "azurerm_public_ip" "nfs_ipp" {
 # Maquina Virtual - NFS
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_virtual_machine
 
-resource "azurerm_linux_virtual_machine" "nfs_vm" {
-    name                = "nfs"
+resource "azurerm_linux_virtual_machine" "k8s_nfs_vm" {
+    name                = "k8snfs"
     resource_group_name = azurerm_resource_group.rg.name
     location            = azurerm_resource_group.rg.location
     size                = var.vm_size
     admin_username      = "ec2-user"
     
-    network_interface_ids = [ azurerm_network_interface.nic_nfs.id ]
+    network_interface_ids = [ azurerm_network_interface.nic_k8s_nfs.id ]
  
     disable_password_authentication = true
     
