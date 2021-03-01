@@ -1,0 +1,15 @@
+#cloud-config
+# configuracion de usuarios
+#
+users:
+  - name: ec2-user
+    gecos: terraform created user
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users
+    ssh_import_id: None
+    lock_passwd: true
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDXTDfThYMOan1hBLeJ9ZJ7aSmu6SygGcGt1H6/MUSmLZJ3Q6Bn4FX7OrTDNcLHhagRk3Y1UVX3wguIJUoqwQXFkaLCpZUdxy4MI8LPa9j9wqEZ9YdqCE1XJOzQbTygHUVQNEc16FLIzzQ1Xz0ec1WB8qu+N5Cc3HDfWBt693PfXdqd+K6NQDTFvcdzlS172eoFWOkmsIktIcFRVsYTxKsA+FfR5lknTknHsrUG/gcUER+0U+c1UdrugAJyfYdT67b8wzPEnfyDP8kcdSX1lk0FTl8bEeUxFCCrUG4npDhNjQzYjhqHbNGQQBnONt85PEHApgBiWUEDW88WS7wpFFvhp8tlEKBl6f2rs5GEAPNbFQo6f/CLUSlfzdKNoCQ/sBKhIhkf3iDci0HVOmgQihjaWdNfkx/62gvBdZ/jb0ThpHHcuEC9ZHiSVrC9wSkR564rMTaqB2beivWGRv+KgpUOoN1B9f56SD3LEL5rcie0pnx8LDH/9/zfaaIlt4904YU1nCzceeEqeN2T8Jxbq4w18QGXu751SESJTHbr6r04Ujj5BDb/fyk/vt1Cz16vte6KBBtD9QlHRo0ijGaDTtLD9VkuQexmXgQeRFm3zjbcUJDBzIC6bbBgoJB57M21Zabl1aJlnXKJi++nM2HgYdrs4ZKxXfb7gQ2NLRXARa5j7Q== ec2-user@ip-172-31-71-113.ec2.internal
+
+runcmd:
+  - hostnamectl set-hostname lab-docker.frontend.lab
