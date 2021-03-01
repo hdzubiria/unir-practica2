@@ -24,10 +24,10 @@
     - name: Iniciando chrony
       command: timedatectl set-ntp true
 
-    # Desactivamos SELinux ya que no lo vamos a utilizar con kubernetes:
+    # 6 -Desactivamos SELinux ya que no lo vamos a utilizar con kubernetes:
     - name: Desactivamos SELinux
       command: sudo sed -i s/=enforcing/=disabled/g /etc/selinux/config
 
-    # Instalar Paquetes requeridos
+    # 7 -Instalar Paquetes requeridos
     - name: Instalar Paquetes requeridos (nfs-utils nfs4-acl-tools wget)
       command: sudo dnf install nfs-utils nfs4-acl-tools wget -y
