@@ -49,4 +49,3 @@ resource "azurerm_network_interface_security_group_association" "k8s_nfs_SecGrou
     network_security_group_id = azurerm_network_security_group.hdz_k8s_SecGroup.id
 
 }
-

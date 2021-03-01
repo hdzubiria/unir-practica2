@@ -5,13 +5,17 @@ all:
     13.84.34.12:
     13.84.34.2:
   children:
-    master:
+    masters:
       hosts:
-        40.124.30.15:
+        master:
+          ansible_host: 40.124.30.15        
     workers:
       hosts:
-        13.84.38.30:
-        13.84.34.12:
-    nfs:
-      hosts:
-        13.84.34.2:
+        worker1:
+          ansible_host: 13.84.38.30
+        worker2:
+          ansible_host: 13.84.34.12
+    nfss:
+      nfs:
+        worker2:
+          ansible_host: 13.84.34.2
