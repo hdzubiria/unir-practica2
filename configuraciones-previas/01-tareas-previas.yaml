@@ -26,6 +26,6 @@
 
     # 5 - Activar la sincronizacion
     - name: Iniciando chrony
-      command:timedatectl set-ntp true
+      command: timedatectl set-ntp true
       delegate_to: 127.0.0.1      
 
