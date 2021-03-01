@@ -7,4 +7,4 @@
     # generamos un valor aleatorio para usarlo como salt y lo guardamos en una variable
     # con delegate_to ejecutamos la tarea en local
     - name: Cambia rla Zona Horaria a America - Bogota
-      command: timedatectl set-timezone America/Bogota
+      command: sudo timedatectl set-timezone America/Bogota
