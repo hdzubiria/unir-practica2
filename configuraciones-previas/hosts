@@ -3,10 +3,11 @@ ansible_python_interpreter usr /bin/python3
 ansible_user =ec2-user
 
 [master]
-master.local
+40.124.30.15
 
 [workers]
-worker.local
+13.84.38.30
+13.84.34.12
 
 [nfs]
-master.local
+13.84.34.2
