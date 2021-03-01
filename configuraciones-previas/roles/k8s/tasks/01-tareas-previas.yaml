@@ -9,7 +9,7 @@
 - name: Instalando Chrony
   #command: dnf install chrony -y
   dnf:
-    name: chrony
+    name: chrony -y
     state: latest
   become: yes
 
@@ -27,7 +27,7 @@
 
 
 # 5 - Activar la sincronizacion
-- name: Iniciando chrony
+- name: Activando chrony
   command: timedatectl set-ntp true
 
 # 6 -Desactivamos SELinux ya que no lo vamos a utilizar con kubernetes:
