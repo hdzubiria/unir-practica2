@@ -7,15 +7,21 @@
 
 # 2 - Instalar chrony
 - name: Instalando Chrony
-  command: sudo dnf install chrony -y
+  command: dnf install chrony -y
+  become: yes
+
 
 # 3 - Habilitar chrony
 - name: Habilitar Chrony
-  command: sudo systemctl enable chronyd
+  command: systemctl enable chronyd
+  become: yes
+
 
 # 4 - Iniciar chrony
 - name: Iniciando chrony
-  command: sudo systemctl start chronyd
+  command: systemctl start chronyd
+  become: yes
+
 
 # 5 - Activar la sincronizacion
 - name: Iniciando chrony
@@ -23,8 +29,12 @@
 
 # 6 -Desactivamos SELinux ya que no lo vamos a utilizar con kubernetes:
 - name: Desactivamos SELinux
-  command: sudo sed -i s/=enforcing/=disabled/g /etc/selinux/config
+  command: sed -i s/=enforcing/=disabled/g /etc/selinux/config
+  become: yes
+
 
 # 7 -Instalar Paquetes requeridos
 - name: Instalar Paquetes requeridos (nfs-utils nfs4-acl-tools wget)
-  command: sudo dnf install nfs-utils nfs4-acl-tools wget -y
+  command: dnf install nfs-utils nfs4-acl-tools wget -y
+  become: yes
+
