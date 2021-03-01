@@ -7,10 +7,7 @@
 
 # 2 - Instalar chrony
 - name: Instalando Chrony
-  #command: dnf install chrony -y
-  dnf:
-    name: chrony -y
-    state: latest
+  command: dnf install chrony -y
   become: yes
 
 
