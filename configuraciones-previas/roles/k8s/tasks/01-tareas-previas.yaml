@@ -2,7 +2,8 @@
 
 # 1 - Cambiar la Zona Horaria a Bogota - Colombia
 - name: Cambiar la Zona Horaria a America - Bogota
-  command: sudo timedatectl set-timezone America/Bogota
+  command: timedatectl set-timezone America/Bogota
+  become: yes
 
 # 2 - Instalar chrony
 - name: Instalando Chrony
