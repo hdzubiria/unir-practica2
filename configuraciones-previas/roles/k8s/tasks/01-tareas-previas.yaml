@@ -1,0 +1,29 @@
+---
+
+# 1 - Cambiar la Zona Horaria a Bogota - Colombia
+- name: Cambiar la Zona Horaria a America - Bogota
+  command: sudo timedatectl set-timezone America/Bogota
+
+# 2 - Instalar chrony
+- name: Instalando Chrony
+  command: sudo dnf install chrony -y
+
+# 3 - Habilitar chrony
+- name: Habilitar Chrony
+  command: sudo systemctl enable chronyd
+
+# 4 - Iniciar chrony
+- name: Iniciando chrony
+  command: sudo systemctl start chronyd
+
+# 5 - Activar la sincronizacion
+- name: Iniciando chrony
+  command: timedatectl set-ntp true
+
+# 6 -Desactivamos SELinux ya que no lo vamos a utilizar con kubernetes:
+- name: Desactivamos SELinux
+  command: sudo sed -i s/=enforcing/=disabled/g /etc/selinux/config
+
+# 7 -Instalar Paquetes requeridos
+- name: Instalar Paquetes requeridos (nfs-utils nfs4-acl-tools wget)
+  command: sudo dnf install nfs-utils nfs4-acl-tools wget -y

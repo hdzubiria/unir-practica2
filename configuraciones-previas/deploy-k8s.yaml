@@ -1,0 +1,7 @@
+---
+
+- name: deploy kubernates
+  hosts: all
+  gather_facts: true
+  roles:
+    - k8s
