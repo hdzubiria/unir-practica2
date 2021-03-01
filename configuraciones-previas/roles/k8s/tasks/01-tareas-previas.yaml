@@ -10,7 +10,7 @@
   #command: dnf install chrony -y
   dnf:
     name: chrony
-    state: absent
+    state: lastest
   become: yes
 
 
