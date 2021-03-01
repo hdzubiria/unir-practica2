@@ -1,7 +1,9 @@
 all:
   hosts:
     master:
-      ansible_host: 13.65.250.182  
+      ansible_host: 13.65.250.182 
+    worker1:
+      ansible_host: 13.65.250.152
   children:
     masters:
       hosts:
