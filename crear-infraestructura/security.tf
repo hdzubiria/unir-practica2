@@ -26,8 +26,27 @@ resource "azurerm_network_security_group" "hdz_k8s_SecGroup" {
 # Vinculamos el security group al interface de red
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_interface_security_group_association
 
-resource "azurerm_network_interface_security_group_association" "mySecGroupAssociation1" {
+resource "azurerm_network_interface_security_group_association" "k8s_mater_SecGroupAssociation" {
     network_interface_id      = azurerm_network_interface.nic_k8s_mater.id
     network_security_group_id = azurerm_network_security_group.hdz_k8s_SecGroup.id
 
 }
+
+resource "azurerm_network_interface_security_group_association" "k8s_worker1_SecGroupAssociation" {
+    network_interface_id      = azurerm_network_interface.nic_k8s_worker1.id
+    network_security_group_id = azurerm_network_security_group.hdz_k8s_SecGroup.id
+
+}
+
+resource "azurerm_network_interface_security_group_association" "k8s_worker2_SecGroupAssociation" {
+    network_interface_id      = azurerm_network_interface.nic_k8s_worker2.id
+    network_security_group_id = azurerm_network_security_group.hdz_k8s_SecGroup.id
+
+}
+
+resource "azurerm_network_interface_security_group_association" "k8s_nfs_SecGroupAssociation" {
+    network_interface_id      = azurerm_network_interface.nic_k8s_nfs.id
+    network_security_group_id = azurerm_network_security_group.hdz_k8s_SecGroup.id
+
+}
+
