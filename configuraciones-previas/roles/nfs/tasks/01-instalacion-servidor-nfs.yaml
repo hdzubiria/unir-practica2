@@ -2,6 +2,11 @@
 
 # 1 - Crear el direcotio donde se almacenará la Información del nfs
 - name: Crear Directorio de nfs
+  command: mkdir /mnt/srv
+  become: yes
+
+# 1a - Crear el direcotio donde se almacenará la Información del nfs
+- name: Crear Directorio de nfs
   command: mkdir /mnt/srv/nfs
   become: yes
 
