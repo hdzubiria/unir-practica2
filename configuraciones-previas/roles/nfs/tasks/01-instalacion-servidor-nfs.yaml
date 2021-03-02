@@ -1,0 +1,9 @@
+---
+
+# 1 - Cambiar la Zona Horaria a Bogota - Colombia
+- name: Verificar cual es el Disco de Datos
+  command: lsblk
+  become: yes
+
+
+

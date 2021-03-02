@@ -1,7 +1,13 @@
 ---
 
-- name: deploy kubernates
+- name: despliegues generales
   hosts: all
   gather_facts: true
   roles:
     - k8s
+
+- name: despliegues nfs
+  hosts: nfs
+  gather_facts: true
+  roles:
+    - nfs
