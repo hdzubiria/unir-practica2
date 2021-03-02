@@ -1,9 +1,52 @@
 ---
 
-# 1 - Cambiar la Zona Horaria a Bogota - Colombia
-- name: Verificar cual es el Disco de Datos
-  command: lsblk
+# 1 - Crear el direcotio donde se almacenará la Información del nfs
+- name: Crear Directorio de nfs
+  command: mkdir /mnt/srv/nfs
   become: yes
 
+# 2 - Crear el Direcorio donde se almacenará la Información del nfs
+- name: Dar permisos al usuairo local sobre el directorio
+  command: chown -R ec2-user /mnt/srv/nfs
+  become: yes
 
+# 3 - Asignar perimsos de escriruta y lectura sobre el Directorio creado
+- name: Asignar permisos de lectura y escritura
+  command: chmod -R u+rX /mnt/srv/nfs
+  become: yes
+
+# 4 - Instalar nfs
+- name: Instalar nfs
+  command: dnf install nfs-utils net-tools -y
+  become: yes
+
+# 5 --Habilitar nfs-server
+- name: Habilitar nfs-server
+  command: systemctl  enable nfs-server
+  become: yes
+
+ # 6 - Iniciar el nfs-server
+- name: Habilitar nfs-server
+  command: systemctl start nfs-server
+  become: yes 
+
+ # 7  - Copiar el exports de la configuración
+- name: Copiar el exports
+  copy:
+    src: exports
+    dest: /etc/exports
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+ 
+# 8 - Leer la Configuración
+- name: Leer la Configuración
+  command: exportfs -r
+  become: yes 
+
+# 9 - Aplicar la nueva configuración de nfs
+- name: Aplicar la nueva configuración
+  command: exportfs -s
+  become: yes 
 
