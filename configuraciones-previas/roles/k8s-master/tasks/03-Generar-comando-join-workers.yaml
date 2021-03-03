@@ -1,15 +1,18 @@
 ---
 
 # 1 - Crear comando  de Join de nodos
+- name: Crear comando  de Join de nodos 
   command: kubeadm token create --print-join-command > ./joincommand
   become: yes
 
 
 # 2 - Guardar comando
+- name: Guardar comando 
   vars: 
     k8s_join_command: "{{ lookup('file', './joincommand') }}"
 
 
 # 3 - Revisar contenido de variable
+- name: Revisar contenido de variable
   debug: msg="La variable k8s_join_command {{ k8s_join_command }}"
   become: yes
