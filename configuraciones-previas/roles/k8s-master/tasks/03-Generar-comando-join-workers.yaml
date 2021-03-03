@@ -3,9 +3,9 @@
 # 1 - Crear comando  de Join de nodos
 - name: Crear comando  de Join de nodos 
   command: kubeadm token create --print-join-command
-  register: joincommand
+  register: k8s_join_command
   become: yes
 
 - name: otra
   debug:
-    var: joincommand.stdout_lines
+    var: k8s_join_command.stdout_lines
