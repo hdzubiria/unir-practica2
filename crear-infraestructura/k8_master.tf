@@ -53,7 +53,7 @@ resource "azurerm_linux_virtual_machine" "k8s_master_vm" {
     name                = "k8smastervm"
     resource_group_name = azurerm_resource_group.rg.name
     location            = azurerm_resource_group.rg.location
-    size                = var.vm_size
+    size                = var.vm_size_master
     admin_username      = "ec2-user"
     
     network_interface_ids = [ azurerm_network_interface.nic_k8s_mater.id ]
