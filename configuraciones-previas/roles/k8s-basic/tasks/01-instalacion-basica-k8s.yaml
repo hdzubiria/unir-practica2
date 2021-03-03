@@ -9,3 +9,68 @@
     group: root
     mode: 0644
   become: yes
+
+# 2 - Activar transparent masquerading 
+- name: Activar transparent masquerading 
+  command: modprobe br_netfilter
+  become: yes  
+
+# 3 - Permitir que kubernetes maneje correctamente el tráfico con el cortafuegos
+- name: Permitir que kubernetes maneje correctamente el tráfico con el cortafuegos
+  copy:
+    src: k8s.conf
+    dest: /etc/sysctl.d/k8s.conf
+    owner: root
+    group: root
+    mode: 0644
+  become: yes  
+
+# 4 - Aplicar la Configuración de k8s.conf
+- name: Aplicar la Configuración de k8s.conf
+  command: sysctl --system
+  become: yes
+
+# 5 - Instalar docker - Adicionar paquete
+- name: Instalar docker - Adicionar paquete
+  command: dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
+  become: yes  
+
+# 6 - Instalar docker - Instalar
+- name: Instalar docker - Instalar
+  command: dnf install docker-ce-19.03.14-3.el8 containerd.io -y
+  become: yes  
+
+# 7 - habilitar docker
+- name: habilitar docker
+  command: systemctl enable docker
+  become: yes
+
+# 8 - Iniciar docker
+- name: Iniciar docker
+  command: systemctl start docker
+  become: yes  
+
+# 9 - Configurar el repositorio de kubernates
+- name: Configurar el repositorio de kubernates
+  copy:
+    src: kubernetes.repo
+    dest: /etc/yum.repos.d/kubernetes.repo
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+
+# 10 - Instalar kubernates - Instalar
+- name: Instalar kubernates - Instalar
+  command: dnf install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+  become: yes  
+
+# 11 - habilitar docker
+- name: habilitar kubernates
+  command: systemctl enable kubelet
+  become: yes
+
+# 12 - Iniciar docker
+- name: iniciar kubernates
+  command: systemctl start kubelet
+  become: yes    
