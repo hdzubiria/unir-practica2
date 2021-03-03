@@ -4,6 +4,4 @@
 - name: Crear comando  de Join de nodos 
   command: kubeadm token create --print-join-command
   register: joincommand
-  debug:
-    var: joincommand
   become: yes
