@@ -1,25 +1,25 @@
 ---
 
 # Primero se deben realizar tareas generales en todas las maquinas 
-- name: Despliegues generales
-  hosts: all
-  gather_facts: true
-  roles:
-    - k8s
+#- name: Despliegues generales
+#  hosts: all
+#  gather_facts: true
+#  roles:
+#    - k8s
 
 # Se debe configura el nfs 
-- name: Despliegues nfs
-  hosts: nfs
-  gather_facts: true
-  roles:
-    - nfs
+#- name: Despliegues nfs
+#  hosts: nfs
+#  gather_facts: true
+#  roles:
+#    - nfs
 
 # Realizar Instalaciones Básicas en las Maquinas de Kubernates
-- name: Despliegues Básicos en Maquinas k8s
-  hosts: k8s
-  gather_facts: true
-  roles:
-    - k8s-basic    
+#- name: Despliegues Básicos en Maquinas k8s
+#  hosts: k8s
+#  gather_facts: true
+#  roles:
+#    - k8s-basic    
 
 # Realizar Instalaciones en Master
 - name: Realizar Instalaciones en Master
