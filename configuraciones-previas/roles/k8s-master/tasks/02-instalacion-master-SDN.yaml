@@ -1,0 +1,32 @@
+---
+
+# 1 - Instalar el operador de Tigera:
+- name: Instalar el operador de Tigera:
+  command: kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
+  become: yes  
+
+
+# 3  - Copiar el custom-resources.yalm 
+- name: Copiar el exports
+  copy:
+    src: custom-resources.yaml
+    dest: ./custom-resources.yaml
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+
+
+# 4 - Instalar Calico:
+- name: Instalar Calico
+  command: kubectl apply -f custom-resources.yaml
+  become: yes
+
+
+
+# 5 - Permitir el acceso de los contenedores a localhost
+- name: Permitir el acceso de los contenedores a localhost
+  command:  ip a
+  become: yes
+
+  
