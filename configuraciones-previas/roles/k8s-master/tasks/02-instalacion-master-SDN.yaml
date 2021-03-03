@@ -1,7 +1,7 @@
 ---
 
 # 1 - Instalar el operador de Tigera:
-- name: Instalar el operador de Tigera:
+- name: Instalar el operador de Tigera
   command: kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
   become: yes  
 
