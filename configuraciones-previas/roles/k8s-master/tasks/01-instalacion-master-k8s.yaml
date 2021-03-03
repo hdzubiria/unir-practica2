@@ -11,3 +11,26 @@
   become: yes
 
 
+# 3 - Instalar el plugin CNI (Container Network Interface) de kubernetes y definir la red de los PODs
+- name: Instalar el plugin CNI (Container Network Interface) de kubernetes y definir la red de los PODs
+  command:  kubeadm init --pod-network-cidr 192.169.0.0/16
+  become: yes
+
+
+# 4 - Crear el Directorio de kubernates para el usuario
+- name: Crear el Directorio de kubernates para el usuario
+  command: mkdir -p /root/.kube
+  become: yes
+
+
+# 4 - Copiar la configuracion desde kuebernates hacia le usuario
+- name: Copiar la configuracion desde kuebernates hacia le usuario
+  command: cp -i /etc/kubernetes/admin.conf /root/.kube/config
+  become: yes
+
+
+# 6 - Dar premiosos sobre del  usuario
+- name: Copiar la configuracion desde kuebernates hacia le usuario
+  command: chown $(id -u):$(id -g) /root/.kube/config
+  become: yes
+
