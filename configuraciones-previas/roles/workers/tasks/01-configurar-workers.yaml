@@ -1,13 +1,6 @@
 ---
 
-# 1 - Crear el Directorio donde se almacenará la Información del nfs
-- name: Crear Directorio de nfs
-  command: mkdir /mnt/srv
-  become: yes
-
-
-# 2 - Crear el Directorio donde se almacenará la Información del nfs
-- name: Dar permisos al usuairo local sobre el directorio
-  command: chown -R ec2-user /mnt/srv/nfs
-  become: yes
-
+# 1 - Mostrar comando  de Join de nodos
+- name: Mostar Comando de Join
+  debug:
+    var: k8s_join_command.stdout_lines

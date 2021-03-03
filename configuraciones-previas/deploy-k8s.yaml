@@ -32,10 +32,10 @@
 
 
 # Configurando los workers
-#- name: Configurando los workers
-#  hosts: workers
-#   vars_files:
-#    - "group_vars/k8s_vars.yaml" 
-#  gather_facts: true
-#  roles:
-#    - workers 
+- name: Configurando los workers
+  hosts: workers
+   vars_files:
+    - "group_vars/k8s_vars.yaml" 
+  gather_facts: true
+  roles:
+    - workers 
