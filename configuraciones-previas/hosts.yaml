@@ -5,6 +5,14 @@ all:
     worker1:
       ansible_host: 70.37.56.62
   children:
+    k8s:
+      hosts:
+        master:
+          ansible_host: 23.102.130.182             
+        worker1:
+          ansible_host: 70.37.56.62
+        worker2:
+          ansible_host: 70.37.52.139  
     masters:
       hosts:
         master:

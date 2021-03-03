@@ -1,0 +1,11 @@
+---
+
+# 1  - Copiar el hosts de la configuración
+- name: Copiar el exports
+  copy:
+    src: hosts
+    dest: /etc/hosts
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
