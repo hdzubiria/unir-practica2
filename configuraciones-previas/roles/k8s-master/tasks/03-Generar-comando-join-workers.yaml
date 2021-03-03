@@ -5,3 +5,6 @@
   command: kubeadm token create --print-join-command
   register: joincommand
   become: yes
+
+- name: otra 
+  debug: joincommand
