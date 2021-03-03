@@ -1,6 +1,25 @@
 ---
 
+# 1 - Crear comando  de Join de nodos
+- name: Crear comando  de Join de nodos 
+  command: kubeadm token create --print-join-command
+  register: k8s_join_command
+  become: yes
+  when: ansible_host == 'master'
+
+
+
+
 # 1 - Mostrar comando  de Join de nodos
 - name: Mostar Comando de Join
   debug:
     var: k8s_join_command.stdout_lines
+  when: ansible_host != 'master'
+
+
+
+# 3 - Permitir el acceso de los contenedores a localhost
+#- name: Permitir el acceso de los contenedores a localhost
+#  command:  ip a
+#  become: yes
+
