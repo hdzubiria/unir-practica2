@@ -6,6 +6,6 @@
   register: joincommand
   become: yes
 
-- name: otra 
-  debug: 
-  msg: "{{ joincommand }}"
+- name: otra
+  debug:
+    var: joincommand.stdout_lines
