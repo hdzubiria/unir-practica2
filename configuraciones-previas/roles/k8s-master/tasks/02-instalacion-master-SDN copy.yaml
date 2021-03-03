@@ -7,7 +7,7 @@
 
 
 # 3  - Copiar el custom-resources.yalm 
-- name: Copiar el exports
+- name: Copiar el custom-resources.yalm 
   copy:
     src: custom-resources.yaml
     dest: ./custom-resources.yaml
@@ -23,10 +23,7 @@
   become: yes
 
 
-
 # 5 - Permitir el acceso de los contenedores a localhost
 - name: Permitir el acceso de los contenedores a localhost
   command:  ip a
   become: yes
-
-  

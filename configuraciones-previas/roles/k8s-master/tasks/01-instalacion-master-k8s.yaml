@@ -30,6 +30,6 @@
 
 
 # 6 - Dar premiosos sobre del  usuario
-- name: Copiar la configuracion desde kuebernates hacia le usuario
-  command: sudo chown $(id -u):$(id -g) /root/.kube/config
+#- name: Copiar la configuracion desde kuebernates hacia le usuario
+#  command: sudo chown $(id -u):$(id -g) /root/.kube/config
 
