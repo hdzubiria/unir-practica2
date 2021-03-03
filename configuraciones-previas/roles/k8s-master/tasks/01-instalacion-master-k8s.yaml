@@ -1,0 +1,13 @@
+---
+
+# 1 - Configuramos kudeadm
+- name: Configurar kudeadm
+  command: kubeadm config images pull
+  become: yes  
+
+# 2 - Permitir el acceso de los contenedores a localhost
+- name: Permitir el acceso de los contenedores a localhost
+  command:  ip a
+  become: yes
+
+
