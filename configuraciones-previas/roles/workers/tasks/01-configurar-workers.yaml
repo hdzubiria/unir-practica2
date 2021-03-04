@@ -9,18 +9,15 @@
   when: inventory_hostname in groups['masters']
 
 # 2 - Mostrar comando  de Join de nodos
-- name: Mostar Comando de Join
+- name: Mostrar Comando de Join
   debug:
-    var: local_command.stdout_lines
-  when: inventory_hostname in groups['masters']
+    var: hostvars['master']['local_command']['stdout_lines'] 
 
 
 # 3 - Ejecutar Join en nodos
 - name: Ejecutar Join en nodos
-  command: "{{local_command}}"
+  command: "{{hostvars['master']['local_command']}}"
   become: yes
-  debug:
-    var: local_command.stdout_lines
   when: inventory_hostname in groups['workers']
 
 
