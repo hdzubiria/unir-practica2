@@ -1,5 +1,5 @@
 ---
 
-#- include_tasks: 01-instalacion-master-k8s.yaml
+- include_tasks: 01-instalacion-master-k8s.yaml
 
 - include_tasks: 02-instalacion-master-SDN.yaml

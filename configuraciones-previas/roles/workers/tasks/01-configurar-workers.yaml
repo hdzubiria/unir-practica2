@@ -16,7 +16,7 @@
 
 # 3 - Ejecutar Join en nodos
 - name: Ejecutar Join en nodos
-  command: {{k8s_join_command}}
+  command: "{{k8s_join_command}}"
   become: yes
   when: inventory_hostname in groups['workers']
 
