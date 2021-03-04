@@ -6,8 +6,23 @@
   command: kubeadm token create --print-join-command
   register: k8s_join_command
   become: yes
+  when: inventory_hostname in groups['masters']
 
 # 2 - Mostrar comando  de Join de nodos
 - name: Mostar Comando de Join
   debug:
     var: k8s_join_command.stdout_lines
+
+
+# 3 - Ejecutar Join en nodos
+- name: Ejecutar Join en nodos
+  command: {{k8s_join_command}}
+  become: yes
+  when: inventory_hostname in groups['workers']
+
+
+# 5 - Permitir el acceso de los contenedores a localhost
+- name: Permitir el acceso de los contenedores a localhost
+  command:  ip a
+  become: yes
+  when: inventory_hostname in groups['workers']
