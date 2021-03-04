@@ -26,3 +26,17 @@
   command:  ip a
   become: yes
   when: inventory_hostname in groups['workers']
+
+
+# 6 - Revisar que si se creraon los nodos
+- name: Mostrar Comando de Join - Ejecutar
+  command: kubectl get nodes
+  register: joined_nodes
+  become: yes
+  when: inventory_hostname in groups['masters']
+
+# 2 - Mostrar comando  de Join de nodos
+- name: Mostrar Comando de Join - Mostrar
+  debug:
+    var: hostvars['master']['joined_nodes']['stdout_lines'] 
+  when: inventory_hostname in groups['masters']
