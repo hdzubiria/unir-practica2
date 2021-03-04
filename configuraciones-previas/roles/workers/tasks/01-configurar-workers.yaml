@@ -35,7 +35,7 @@
   become: yes
   when: inventory_hostname in groups['masters']
 
-# 2 - Mostrar comando  de Join de nodos
+# 7 - Mostrar comando  de Join de nodos
 - name: Mostrar Comando de Join - Mostrar
   debug:
     var: hostvars['master']['joined_nodes']['stdout_lines'] 

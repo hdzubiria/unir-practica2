@@ -6,7 +6,5 @@
   vars_files:
     - "group_vars/k8s_vars.yaml"  
   gather_facts: true
-  vars:
-       local_command: ""
   roles:
     - workers
