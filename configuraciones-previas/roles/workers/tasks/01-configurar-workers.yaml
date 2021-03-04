@@ -16,7 +16,7 @@
 
 # 3 - Ejecutar Join en nodos
 - name: Ejecutar Join en nodos
-  command: "{{hostvars['master']['local_command']['stdout_lines']}}"
+  command: "{{hostvars['master']['local_command']['stdout_lines'][0]}}"
   become: yes
   when: inventory_hostname in groups['workers']
 
