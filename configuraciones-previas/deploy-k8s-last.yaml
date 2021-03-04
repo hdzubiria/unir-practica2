@@ -1,0 +1,19 @@
+---
+
+# Realizar Instalaciones en Master
+- name: Realizar Instalaciones en Master
+  hosts: master
+  vars_files:
+    - "group_vars/k8s_vars.yaml"
+  gather_facts: true
+  roles:
+    - k8s-master
+
+# Configurando los workers
+- name: Configurando los workers
+  hosts: k8s
+  vars_files:
+    - "group_vars/k8s_vars.yaml"  
+  gather_facts: true
+  roles:
+    - workers
