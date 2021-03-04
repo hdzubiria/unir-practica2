@@ -19,6 +19,8 @@
 - name: Ejecutar Join en nodos
   command: "{{local_command}}"
   become: yes
+  debug:
+    var: local_command.stdout_lines
   when: inventory_hostname in groups['workers']
 
 
