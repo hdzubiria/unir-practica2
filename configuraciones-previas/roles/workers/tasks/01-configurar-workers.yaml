@@ -12,6 +12,7 @@
 - name: Mostar Comando de Join
   debug:
     var: local_command.stdout_lines
+  when: inventory_hostname in groups['masters']
 
 
 # 3 - Ejecutar Join en nodos
