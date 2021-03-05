@@ -2,7 +2,7 @@
 
 # Desplegando un ingress controller
 - name: Desplegando un ingress controller
-  hosts: ingress
+  hosts: master
   gather_facts: true
   roles:
-    - master
+    - ingress
