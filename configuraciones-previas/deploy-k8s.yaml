@@ -34,3 +34,10 @@
   gather_facts: true
   roles:
     - workers
+
+# Desplegando un ingress controller
+- name: Desplegando un ingress controller
+  hosts: ingress
+  gather_facts: true
+  roles:
+    - master

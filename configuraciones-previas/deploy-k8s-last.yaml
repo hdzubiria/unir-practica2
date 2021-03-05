@@ -1,10 +1,8 @@
 ---
 
-# Configurando los workers
-- name: Configurando los workers
-  hosts: k8s
-  vars_files:
-    - "group_vars/k8s_vars.yaml"  
+# Desplegando un ingress controller
+- name: Desplegando un ingress controller
+  hosts: ingress
   gather_facts: true
   roles:
-    - workers
+    - master

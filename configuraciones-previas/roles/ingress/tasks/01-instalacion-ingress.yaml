@@ -1,0 +1,18 @@
+---
+
+# 1 - Desplegando un ingress controller
+- name: Desplegando un ingress controller
+  command: kubectl apply -f https://raw.githubusercontent.com/haproxytech/kubernetes-ingress/v1.5/deploy/haproxy-ingress.yaml
+  become: yes
+
+
+# 2 - Revisar que si queod aplicado Ingress
+- name: Revisar que si quedo aplicado Ingress - Ejecutar
+  command: kubectl get namespaces
+  register: h8s_namespaces
+  become: yes
+
+# 3 - Revisar que si quedo aplicado Ingress - Mostrar
+- name: Revisar que si quedo aplicado Ingress - Mostrar
+  debug:
+    var: hostvars['master']['h8s_namespaces']['stdout_lines'] 
