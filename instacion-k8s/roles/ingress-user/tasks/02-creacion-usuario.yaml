@@ -5,9 +5,31 @@
   command: useradd -md /home/kubeadmin kubeadmin
   become: yes
 
-# 2 - Creamos un usuario no administrador
-- name: Adicionar el uuario
-  command: useradd -md /home/kubeadmin kubeadmin
+# 2 - Asignación del Password
+- name:  Asignación del Password
+  command: passwd kubeadmin
   become: yes
 
 
+# 3 - Crear el Directorio /home/kubeadmin/.kube
+- name: Crear Directorio de nfs
+  command:  mkdir -p /home/kubeadmin/.kube
+  become: yes
+
+
+# 4 - Copiar el Config
+- name: Copiar el Config
+  command: cp -i /etc/kubernetes/admin.conf /home/kubeadmin/.kube/config
+  become: yes
+
+
+# 5 - Dar permisos
+- name: Dar permisos
+  command: chown kubeadmin. /home/kubeadmin/.kube/config
+  become: yes
+
+
+# 6 - Dar permisos
+- name: Incluir permisos
+  command: cat <<EOF > /etc/sudoers.d/kubeadmin ALL            ALL = (ALL) NOPASSWD:: ALL
+  become: yes

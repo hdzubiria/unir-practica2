@@ -1,0 +1,65 @@
+---
+
+# 1 - Crear el namespace webapp-volumes
+- name: Crear el namespace webapp-volumes 
+  command: kubectl create namespace webapp-volumes
+  become: yes  
+
+
+# 2  - Copiar el Archivo de definción del Volumen
+- name: Copiar el Archivo de definción del Volumen
+  copy:
+    src: nfs-pv.yaml
+    dest: ./nfs-pv.yaml
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+
+# 3 - Crear el volumen
+- name: Crear el volumen
+  command: kubectl apply -f nfs-pv.yaml 
+  become: yes  
+
+# 4  - Copiar el Archivo de CLAIM
+- name: Copiar el Archivo de CLAIM
+  copy:
+    src: nfs-pvc.yaml
+    dest: ./nfs-pvc.yaml
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+
+# 5 - Aplicar el CLAIM
+- name: Crear el volumen
+  command:  kubectl apply -f nfs-pvc.yaml
+  become: yes  
+
+
+# 4  - Copiar el Archivo archivo de deployment
+- name: Copiar el Archivo archivo de deployment
+  copy:
+    src: webapp-volumes.yaml
+    dest: ./webapp-volumes.yaml
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+
+# 5 - Hacer el Deployment
+- name: Hacer el Deployment
+  command:  kubectl apply -f webapp-volumes.yaml
+  become: yes  
+
+# 4 - Revisar Si esta Instalada 
+- name: Revisar Si esta Instalada  - Ejecutar
+  command:  kubectl get pods --namespace=webapp-volumes -o wide
+  register: running_app
+  become: yes
+  
+# 5 -Revisar Servicios 
+- name: Revisar Si esta Instalada  - Mostrar
+  debug:
+    var: hostvars['master']['running_app']['stdout_lines'] 
+    

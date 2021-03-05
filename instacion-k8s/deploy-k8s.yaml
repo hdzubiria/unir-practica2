@@ -41,3 +41,11 @@
   gather_facts: true
   roles:
     - ingress-user
+
+
+# Instalar App con Volumenes
+- name: Instalar App con Volumenes
+  hosts: master
+  gather_facts: true
+  roles:
+    - install-app  
