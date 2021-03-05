@@ -1,27 +1,27 @@
 all:
   hosts:
     master:
-      ansible_host: 52.171.216.212
+      ansible_host: 13.66.26.152
   children:
     k8s:
       hosts:
         master:
-          ansible_host: 52.171.216.212             
+          ansible_host: 13.66.26.152             
         worker1:
-          ansible_host: 13.84.189.158
+          ansible_host: 13.66.31.170
         worker2:
-          ansible_host: 23.102.189.61
+          ansible_host: 157.55.177.75
     masters:
       hosts:
         master:
-          ansible_host: 52.171.216.212        
+          ansible_host: 13.66.26.152        
     workers:
       hosts:
         worker1:
-          ansible_host: 13.84.189.158
+          ansible_host: 13.66.31.170
         worker2:
-          ansible_host: 23.102.189.61
+          ansible_host: 157.55.177.75
     nfss:
       hosts:
         nfs:
-          ansible_host: 104.214.26.56
+          ansible_host: 13.66.31.181
