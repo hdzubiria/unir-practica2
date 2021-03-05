@@ -15,4 +15,4 @@
 # 3 - Revisar que si quedo aplicado Ingress - Mostrar
 - name: Revisar que si quedo aplicado Ingress - Mostrar
   debug:
-    var: hostvars['master']['h8s_namespaces']['stdout_lines'] 
+    var: {{h8s_namespaces}}
