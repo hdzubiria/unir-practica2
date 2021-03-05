@@ -6,14 +6,26 @@
   become: yes
 
 
-# 6 - Revisar los namespaces 
+# 2 - Revisar los namespaces 
 - name: Revisar los namespaces  - Ejecutar
   command: kubectl get namespaces
   register: namespaces
   become: yes
   
-# 7 -Revisar los namespaces 
+# 3 -Revisar los namespaces 
 - name: Revisar los namespaces  - Mostrar
   debug:
     var: hostvars['master']['namespaces']['stdout_lines'] 
   
+
+# 4 - Revisar Servicios 
+- name: Revisar Servicios  - Ejecutar
+  command: kubectl get namespaces
+  register: servicios
+  become: yes
+  
+# 5 -Revisar Servicios 
+- name: Revisar Servicios  - Mostrar
+  debug:
+    var: hostvars['master']['servicios']['stdout_lines'] 
+    
