@@ -15,4 +15,4 @@
 # 3 - Revisar que si quedo aplicado Ingress - Mostrar
 - name: Revisar que si quedo aplicado Ingress - Mostrar
   debug:
-    var: {{h8s_namespaces}}
+    var: "{{h8s_namespaces}}""
