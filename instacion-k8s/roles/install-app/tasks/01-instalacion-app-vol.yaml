@@ -1,8 +1,8 @@
 ---
 
-# 1 - Crear el namespace webapp-vols
-- name: Crear el namespace webapp-vols 
-  command: kubectl create namespace webapp-vols
+# 1 - Crear el namespace webapp-volumes
+- name: Crear el namespace webapp-volumes 
+  command: kubectl create namespace webapp-volumes
   become: yes  
 
 
@@ -40,8 +40,8 @@
 # 4  - Copiar el Archivo archivo de deployment
 - name: Copiar el Archivo archivo de deployment
   copy:
-    src: webapp-vols.yaml
-    dest: ./webapp-vols.yaml
+    src: webapp-volumes.yaml
+    dest: ./webapp-volumes.yaml
     owner: root
     group: root
     mode: 0644
@@ -49,12 +49,12 @@
 
 # 5 - Hacer el Deployment
 - name: Hacer el Deployment
-  command:  kubectl apply -f webapp-vols.yaml
+  command:  kubectl apply -f webapp-volumes.yaml
   become: yes  
 
 # 4 - Revisar Si esta Instalada 
 - name: Revisar Si esta Instalada  - Ejecutar
-  command:  kubectl get pods --namespace=webapp-vols -o wide
+  command:  kubectl get pods --namespace=webapp-volumes -o wide
   register: running_app
   become: yes
   
