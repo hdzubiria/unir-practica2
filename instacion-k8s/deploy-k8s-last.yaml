@@ -5,4 +5,4 @@
   hosts: master
   gather_facts: true
   roles:
-    - ingress
+    - ingress-user

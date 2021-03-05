@@ -1,0 +1,13 @@
+---
+
+# 1 - Creamos un usuario no administrador
+- name: Adicionar el uuario
+  command: useradd -md /home/kubeadmin kubeadmin
+  become: yes
+
+# 2 - Creamos un usuario no administrador
+- name: Adicionar el uuario
+  command: useradd -md /home/kubeadmin kubeadmin
+  become: yes
+
+
