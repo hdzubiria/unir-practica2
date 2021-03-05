@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp-volumes
-  namespace: webapp-volumes
+  name: webapp-volumenes
+  namespace: webapp-volumenes
   labels:
-    app: webapp-volumes
+    app: webapp-volumenes
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: webapp-volumes
+      app: webapp-volumenes
   template:
     metadata:
       labels:
-        app: webapp-volumes
+        app: webapp-volumenes
     spec:
       containers:
-      - name: webapp-volumes
+      - name: webapp-volumenes
         image: quay.io/rhte_2019/webapp:v1
         ports:
         - containerPort: 80
@@ -32,10 +32,10 @@ apiVersion: v1
 kind: Service
 metadata:
     name: volumes-service
-    namespace: webapp-volumes
+    namespace: webapp-volumenes
 spec:
     selector:
-      app: webapp-volumes
+      app: webapp-volumenes
     ports:
     - name: http
       protocol: TCP
@@ -46,9 +46,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: volumes-ingress
-  namespace: webapp-volumes
+  namespace: webapp-volumenes
   labels:
-    app: webapp-volumes
+    app: webapp-volumenes
   annotations:
       haproxy.org/path-rewrite: "/"
 spec:
@@ -68,7 +68,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: haproxy-configmap
-  namespace: webapp-volumes
+  namespace: webapp-volumenes
 data:
   servers-increment: "42"
   ssl-redirect: "OFF"
