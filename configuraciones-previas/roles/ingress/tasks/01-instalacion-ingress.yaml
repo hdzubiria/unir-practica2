@@ -20,7 +20,7 @@
 
 # 4 - Revisar Servicios 
 - name: Revisar Servicios  - Ejecutar
-  command: kubectl get namespaces
+  command: kubectl get svc -A
   register: servicios
   become: yes
   
